@@ -1,0 +1,26 @@
+---
+import WorkCard from "./WorkCard.astro"
+---
+
+<div class="work-section bg-neutral-900 py-6 px-6 rounded-xl ">
+  <div class="grid grid-cols-1 gap-6 max-w-screen-xl">
+    <WorkCard 
+      title="Project One" 
+      description="A brief description of project one." 
+      image="https://cdn.britannica.com/10/250610-050-BC5CCDAF/Zebra-finch-Taeniopygia-guttata-bird.jpg" 
+      link="/projects/project-one" 
+    />
+    <WorkCard 
+      title="Project Two" 
+      description="A brief description of project two." 
+      image="/images/project2.jpg" 
+      link="/projects/project-two" 
+    />
+    <WorkCard 
+      title="Project Three" 
+      description="A brief description of project three." 
+      image="/images/project3.jpg" 
+      link="/projects/project-three" 
+    />
+  </div>
+</div>

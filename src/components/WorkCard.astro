@@ -1,0 +1,12 @@
+---
+const { title, description, image, link } = Astro.props;
+---
+
+<div class="work-card max-w-screen-xl w-full bg-white text-neutral-800 rounded-lg py-4 px-6">
+  <a href={link} class="work-card-link">
+    <img src={image} alt={title} class="work-card-image max-h-84 rounded-lg" />
+    <div class="work-card-content">
+      <h3 class="work-card-title text-lg font-medium">{title}</h3>
+      <p class="work-card-description text-md text-neutral-700">{description}</p>
+    </div>
+  </a>	
