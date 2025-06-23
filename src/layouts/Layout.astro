@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro'
 import Header from '../components/Header.astro'
 import './src/styles/global.css' 
 import WorkSection from '../components/WorkSection.astro'
+import IconBadge from '../components/IconBadge.astro'
 ---   
 <html lang="en">
 	<head>
@@ -11,6 +12,7 @@ import WorkSection from '../components/WorkSection.astro'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+        <link href="https://api.fontshare.com/v2/css?f[]=host-grotesk@400,500,700&display=swap" rel="stylesheet">
 		<title>Astro</title>
 	</head>
 	<body>
@@ -18,9 +20,9 @@ import WorkSection from '../components/WorkSection.astro'
             <Header />
             <main class="flex-grow">
             <Hero />
-            <WorkSection />
+            <WorkSection /> 
             </main>
-            <Footer/>
+            <!--<Footer/> -->
             <slot class="mx-auto" />   
         </div>
 		
