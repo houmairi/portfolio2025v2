@@ -1,12 +1,19 @@
 ---
 const { title, description, image, link } = Astro.props;
+const imageUrl = image || "https://placehold.co/800x400/f3f4f6/6b7280?text=Project+Image";
 ---
 
-<div class="work-card max-w-screen-xl w-full bg-white text-neutral-800 rounded-lg py-4 px-6">
+<div class="work-card max-w-screen-xl w-full bg-white text-neutral-800 rounded-lg py-4 px-4">
   <a href={link} class="work-card-link">
-    <img src={image} alt={title} class="work-card-image w-full max-h-84 rounded-lg" />
-    <div class="work-card-content">
-      <h3 class="work-card-title text-lg font-medium">{title}</h3>
-      <p class="work-card-description text-md text-neutral-700">{description}</p>
+    <img 
+      src={imageUrl} 
+      alt={title} 
+      class="work-card-image w-full max-h-84 rounded-lg object-cover" 
+      onerror="this.src='https://placehold.co/800x400/f1f1f1/6b7280?text=Work+In+Progress'"
+    />
+    <div class="work-card-content mt-4">
+      <h3 class="work-card-title text-xl font-medium font-satoshi">{title}</h3>
+      <p class="work-card-description text-lg text-neutral-700 font-satoshi">{description}</p>
     </div>
-  </a>	
+  </a>
+</div>

@@ -2,25 +2,30 @@
 import Footer from '../components/Footer.astro'
 import Hero from '../components/Hero.astro'
 import Header from '../components/Header.astro'
-import './src/styles/global.css' 
+import '../styles/global.css'  
 import WorkSection from '../components/WorkSection.astro'
 import IconBadge from '../components/IconBadge.astro'
----   
+import { Icon } from '@lucide/astro'
+import About from '../components/About.astro'
+import Techstack from '../components/Techstack.astro'
+---
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-        <link href="https://api.fontshare.com/v2/css?f[]=host-grotesk@400,500,700&display=swap" rel="stylesheet">
+		<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 		<title>Astro</title>
 	</head>
 	<body>
         <div class="max-w-screen-xl mx-auto px-4">
             <Header />
-            <main class="flex-grow">
+            <main class="flex-grow gap-6">
             <Hero />
             <WorkSection /> 
+            <Techstack />
+            <About />
+
             </main>
             <!--<Footer/> -->
             <slot class="mx-auto" />   

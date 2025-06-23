@@ -1,23 +1,82 @@
 ---
-import { MoveUpRight } from '@lucide/astro';
+import { Copy, Check } from '@lucide/astro';
 ---
 
 <div class="header">
   <nav class="flex items-center justify-between py-4">
-        <p class="text-xl font-medium text-neutral-800">arjun bhogal</p>
-        <!-- Center Nav -->
-        <div class="hidden md:flex space-x-6">
-            <a href="/work" class="text-neutral-800 text-xl font-medium hover:text-neutral-600">work</a>
-            <a href="/about" class="text-neutral-800 text-xl font-medium hover:text-neutral-600">about</a>
-            <a href="/contact" class="text-neutral-800 text-xl font-medium hover:text-neutral-600">contact</a>
-        </div>
-        <!-- Email Button -->
-        <div class="hidden md:flex items-center space-x-2 bg-neutral-800 hover:bg-neutral-700 transition-colors px-4 py-2 rounded-3xl">
-          <a href="mailto:arjun@bhogal.at" class="text-white text-lg font-medium">arjun@bhogal.at</a>
-          <MoveUpRight stroke-width="3" class="text-white w-4 h-4 cursor-pointer" />
-        </div>
-
-      
-
+    <p style="font-family: 'Satoshi', sans-serif;" class="text-xl font-medium text-neutral-800">arjun bhogal</p>
+    
+    <!-- Center Nav -->
+    <div class="hidden md:flex space-x-6">
+      <a href="/work" style="font-family: 'Satoshi', sans-serif;" class="text-neutral-800 text-xl font-medium hover:text-neutral-600">work</a>
+      <a href="/about" style="font-family: 'Satoshi', sans-serif;" class="text-neutral-800 text-xl font-medium hover:text-neutral-600">about</a>
+      <a href="/contact" style="font-family: 'Satoshi', sans-serif;" class="text-neutral-800 text-xl font-medium hover:text-neutral-600">contact</a>
+    </div>
+    
+    <!-- Email Copy Button -->
+    <div class="hidden md:flex items-center space-x-2 bg-neutral-800 hover:bg-neutral-700 transition-colors px-4 py-2 rounded-3xl cursor-pointer group" id="copyEmailBtn">
+      <span style="font-family: 'Satoshi', sans-serif;" class="text-white text-lg font-medium">arjun@bhogal.at</span>
+      <Copy stroke-width="3" class="text-white w-4 h-4 group-hover:scale-110 transition-transform" id="copyIcon" />
+      <Check stroke-width="3" class="text-white w-4 h-4 hidden" id="checkIcon" />
+    </div>
   </nav>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const copyBtn = document.getElementById('copyEmailBtn');
+    const copyIcon = document.getElementById('copyIcon');
+    const checkIcon = document.getElementById('checkIcon');
+    const email = 'arjun@bhogal.at';
+
+    copyBtn?.addEventListener('click', async function() {
+      try {
+        await navigator.clipboard.writeText(email);
+        
+        // Switch to check icon
+        copyIcon.classList.add('hidden');
+        checkIcon.classList.remove('hidden');
+        
+        // Switch back after 3 seconds
+        setTimeout(() => {
+          checkIcon.classList.add('hidden');
+          copyIcon.classList.remove('hidden');
+        }, 3000);
+        
+      } catch (err) {
+        console.error('Failed to copy email: ', err);
+        // Fallback für ältere Browser
+        fallbackCopyTextToClipboard(email);
+      }
+    });
+
+    // Fallback function für ältere Browser
+    function fallbackCopyTextToClipboard(text) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.top = "0";
+      textArea.style.left = "0";
+      textArea.style.position = "fixed";
+      
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        document.execCommand('copy');
+        // Switch to check icon
+        copyIcon.classList.add('hidden');
+        checkIcon.classList.remove('hidden');
+        
+        setTimeout(() => {
+          checkIcon.classList.add('hidden');
+          copyIcon.classList.remove('hidden');
+        }, 3000);
+      } catch (err) {
+        console.error('Fallback: Could not copy text: ', err);
+      }
+      
+      document.body.removeChild(textArea);
+    }
+  });
+</script>

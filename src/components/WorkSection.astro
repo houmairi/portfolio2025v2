@@ -2,25 +2,49 @@
 import WorkCard from "./WorkCard.astro"
 ---
 
-<div class="work-section bg-neutral-900 py-6 px-6 rounded-xl ">
-  <div class="grid grid-cols-1 gap-6 max-w-screen-xl">
+<div id="work-section" class="work-section bg-neutral-800 py-6 px-6 rounded-xl transition-all duration-500 mx-auto" style="max-width: 100%;">
+  <h2 style="font-family: 'Satoshi', sans-serif;" class="text-9xl font-semibold text-white mb-6">Case Studies</h2>
+  <div class="grid grid-cols-1 gap-6">
     <WorkCard 
       title="Project One" 
       description="A brief description of project one." 
-      image="https://cdn.britannica.com/10/250610-050-BC5CCDAF/Zebra-finch-Taeniopygia-guttata-bird.jpg" 
+      image="https://placehold.co/800x400/f3f4f6/6b7280?text=Project+One" 
       link="/projects/project-one" 
     />
     <WorkCard 
       title="Project Two" 
       description="A brief description of project two." 
-      image="/images/project2.jpg" 
+      image="https://placehold.co/800x400/f3f4f6/6b7280?text=Project+Two" 
       link="/projects/project-two" 
     />
     <WorkCard 
       title="Project Three" 
       description="A brief description of project three." 
-      image="/images/project3.jpg" 
+      image="https://placehold.co/800x400/f3f4f6/6b7280?text=Project+Three" 
       link="/projects/project-three" 
     />
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.getElementById("work-section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            
+            section.style.maxWidth = "90%"; // entspricht max-w-3xl
+          } else {
+            
+            section.style.maxWidth = "100%";
+          }
+        });
+      },
+      { threshold: 0.3 } // Trigger früher
+    );
+
+    observer.observe(section);
+  });
+</script>
