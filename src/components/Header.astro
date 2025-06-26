@@ -2,7 +2,7 @@
 import { Copy, Check } from '@lucide/astro';
 ---
 
-<div class="header">
+<div id="navbar" class="header sticky top-0 z-50 backdrop-blur bg-white/20 transition-transform duration-300">
   <nav class="flex items-center justify-between py-4">
     <p style="font-family: 'Satoshi', sans-serif;" class="text-xl font-medium text-neutral-800">arjun bhogal</p>
     
@@ -79,4 +79,25 @@ import { Copy, Check } from '@lucide/astro';
       document.body.removeChild(textArea);
     }
   });
+
+  let lastScroll = 0;
+  const nav = document.getElementById('navbar');
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll <= 0) {
+      nav.style.transform = 'translateY(0)';
+      return;
+    }
+
+    if (currentScroll > lastScroll) {
+      nav.style.transform = 'translateY(-100%)'; // Hide
+    } else {
+      nav.style.transform = 'translateY(0)'; // Show
+    }
+
+    lastScroll = currentScroll;
+  });
+  
 </script>
