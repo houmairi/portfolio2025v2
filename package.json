@@ -11,7 +11,7 @@
   "dependencies": {
     "@lucide/astro": "^0.516.0",
     "@tailwindcss/vite": "^4.1.10",
-    "astro": "^5.9.3",
+    "astro": "^5.10.1",
     "google-fonts": "^1.0.0",
     "tailwindcss": "^4.1.10"
   }
