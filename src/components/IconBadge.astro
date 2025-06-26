@@ -1,8 +1,8 @@
 ---
-const { logoSrc, label, hyperlink } = Astro.props;
+const { logoSrc, label, link } = Astro.props;
 ---
 
-<div class="px-3 py-2 rounded-md border border-neutral-300 hover:border-neutral-800 hover:shadow-md  transition-colors inline-flex items-center gap-2 bg-white">
+<a target="_blank" href={link} class="px-3 py-2 rounded-md border border-neutral-300 hover:border-neutral-800 hover:shadow-md transition-colors inline-flex items-center gap-2 bg-white">
   <img src={logoSrc} alt={label + ' logo'} class="w-6 h-6 rounded" />
   <span style="font-family: 'Satoshi', sans-serif;" class="text-neutral-500 hover:text-neutral-800 text-base font-normal">{label}</span>
-</div>
+</a>
