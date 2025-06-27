@@ -1,12 +1,39 @@
 ---
-
+import { Mail } from '@lucide/astro';
 ---
 <!-- Footer Component -->
-<footer class="bg-neutral-800 text-white py-4 p-4 w-full rounded-xl mt-16 mb-12 flex-col">
-  <div class="max-w-screen-xl mx-auto px-4 flex justify-between items-center">
-    <div style="font-family: 'Satoshi', sans-serif;"class ="justfy-start text-White text-md">Interested in collaborating?<br/>Don’t hesitate.</div>
-
+<footer id="footer" class="bg-neutral-800 text-white py-4 p-4 w-full rounded-xl mt-16 mb-12 flex-col  transition-all duration-500 mx-auto gap space-y-4 px-4" style="max-width: 100%;">
+  <div class="max-w-screen-xl mx-auto justify-between items-center space-y-6">
+    <div style="font-family: 'Satoshi', sans-serif;" class="justify-start text-White text-lg">Interested in collaborating?<br/>Don’t hesitate.</div>
+    <div class="flex flex-row space-x-4 algin-items-center">
+      <div style="font-family: 'Satoshi', sans-serif;" class="text-White text-8xl font-medium">Get in touch!</div>
+      <Mail class="w-[6rem] h-[6rem] text-white">
+    </div>
     <p style="font-family: 'Satoshi', sans-serif;" class="text-sm">&copy; 2025 Arjun Bhogal. All rights reserved.</p>
   </div>
+ 
+    
 </footer>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.getElementById("footer");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            
+            section.style.maxWidth = "90%"; // entspricht max-w-3xl
+          } else {
+            
+            section.style.maxWidth = "100%";
+          }
+        });
+      },
+      { threshold: 0.3 } // Trigger früher
+    );
+
+    observer.observe(section);
+  });
+</script>
