@@ -1,26 +1,64 @@
 ---
 ---
 
-<div id="Hero" class="py-20  px-4 py-32">
-    <div class="flex items-center justify-between " style="font-family: 'Satoshi', sans-serif;">
+<div id="Hero" class="py-20 px-4 py-32">
+    <div class="flex items-center justify-between" style="font-family: 'Satoshi', sans-serif;">
         <div id="herotext" class="flex flex-col space-y-3">
             <h1 style="font-family: 'Satoshi', sans-serif;" class="text-8xl font-semibold text-neutral-800">Hi, I'm Arjun Bhogal</h1>
-            <h2 style="font-family: 'Satoshi', sans-serif;" class="text-8xl font-semibold text-neutral-800"> A UI/UX Designer </h2>
+            <h2 style="font-family: 'Satoshi', sans-serif;" class="text-8xl font-semibold text-neutral-800">A UI/UX Designer</h2>
         </div>
-        <img src="/images/arjun_img.png" alt="Arjun Bhogal Img" class="w-64 h-64 rounded-full object-cover" />
+        <img src="/images/arjun_img.png" alt="Arjun Bhogal Img" class="w-64 h-64 rounded-full object-cover" id="heroImage" />
     </div>
 
-    <div class="flex items-center space-x-4">
+    <div class="flex items-center space-x-4" id="heroFooter">
         <p style="font-family: 'Satoshi', sans-serif;" class="font-grotesk text-2xl font-medium text-neutral-800">
             Based in Vienna, Austria
         </p>
         <div style="font-family: 'Satoshi', sans-serif;" class="font-satoshi flex items-center text-green-600 py-2 rounded-3xl max-w-fit">
             <span class="relative flex size-2">
-            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-600 opacity-75"></span>
-            <span class="relative inline-flex size-2 rounded-full bg-green-600"></span>
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-600 opacity-75"></span>
+                <span class="relative inline-flex size-2 rounded-full bg-green-600"></span>
             </span>
-    
             <p class="px-1 italic text-xl font-medium">Open to work</p>
         </div>
     </div>
 </div>
+
+<script>
+    import { gsap } from 'gsap';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const tl = gsap.timeline();
+        
+        // Text von unten
+        tl.from("#herotext h1", {
+            duration: 1,
+            y: 80,
+            opacity: 0,
+            ease: "power2.out"
+        })
+        .from("#herotext h2", {
+            duration: 1,
+            y: 80,
+            opacity: 0,
+            ease: "power2.out"
+        }, "-=0.7")
+        
+        // Bild REINROLLEN! 🎯
+        .from("#heroImage", {
+            duration: 1.2,
+            x: 200,              // Von rechts
+            rotation: 360,      // Eine komplette Drehung
+            opacity: 0,
+            ease: "power2.out"
+        }, "-=0.8")
+        
+        // Footer von unten
+        .from("#heroFooter", {
+            duration: 0.8,
+            y: 50,
+            opacity: 0,
+            ease: "power2.out"
+        }, "-=0.5");
+    });
+</script>
