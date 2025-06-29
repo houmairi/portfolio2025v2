@@ -5,15 +5,17 @@ const imageUrl = image || "https://placehold.co/800x400/f3f4f6/6b7280?text=Proje
 
 <div class="work-card max-w-screen-xl w-full bg-white text-neutral-800 rounded-lg py-4 px-4">
   <a href={link} class="work-card-link">
-    <img 
-      src={imageUrl} 
-      alt={title} 
-      class="work-card-image w-full max-h-84 rounded-lg object-cover" 
-      onerror="this.src='https://placehold.co/800x400/f1f1f1/6b7280?text=Work+In+Progress'"
-    />
+    <div class="aspect-[16/9] w-full rounded-lg overflow-hidden bg-neutral-100">
+      <img s
+        src={imageUrl} 
+        alt={title} 
+        class="object-cover w-full h-full" 
+        onerror="this.src='https://placehold.co/800x400/f1f1f1/6b7280?text=Work+In+Progress'"
+      />
+    </div>
     <div class="work-card-content mt-4">
-      <h3 class="work-card-title text-xl font-medium font-satoshi">{title}</h3>
-      <p class="work-card-description text-lg text-neutral-700 font-satoshi">{description}</p>
+      <h3 style="font-family: 'Satoshi', sans-serif;" class="text-lg font-medium mb-1">{title}</h3>
+      <p style="font-family: 'Satoshi', sans-serif;" class="text-md text-neutral-600">{description}</p>
     </div>
   </a>
 </div>
