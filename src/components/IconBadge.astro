@@ -2,7 +2,7 @@
 const { logoSrc, label, link } = Astro.props;
 ---
 
-<a target="_blank" href={link} class="px-3 py-2 rounded-md border border-neutral-300 hover:border-neutral-800 hover:shadow-md transition-colors inline-flex items-center gap-2 bg-white group">
+<a target="_blank" href={link} class="badge-item px-3 py-2 rounded-md border border-neutral-300 hover:border-neutral-800 hover:shadow-md transition-colors inline-flex items-center gap-2 bg-white group">
   <img src={logoSrc} alt={label + ' logo'} class="w-6 h-6 rounded" />
   <span style="font-family: 'Satoshi', sans-serif;" class="text-neutral-500 group-hover:text-neutral-800 text-base font-normal">{label}</span>
 </a>

@@ -1,25 +1,25 @@
 ---
 ---
 
-<div id="Hero" class="py-20 px-4 py-32">
-    <div class="flex items-center justify-between" style="font-family: 'Satoshi', sans-serif;">
-        <div id="herotext" class="flex flex-col space-y-3">
-            <h1 style="font-family: 'Satoshi', sans-serif;" class="text-8xl font-semibold text-neutral-800">Hi, I'm Arjun Bhogal</h1>
-            <h2 style="font-family: 'Satoshi', sans-serif;" class="text-8xl font-semibold text-neutral-800">A UI/UX Designer</h2>
+<div id="Hero" class="py-20 px-4 md:py-32">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8" style="font-family: 'Satoshi', sans-serif;">
+        <img src="/images/arjun_img.png" alt="Arjun Bhogal Img" class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover md:order-last" id="heroImage" />
+        <div id="herotext" class="flex flex-col md:space-y-3 flex-1">
+            <h1 style="font-family: 'Satoshi', sans-serif;" class="text-4xl md:text-8xl font-semibold text-neutral-800">Hi, I'm Arjun Bhogal</h1>
+            <h2 style="font-family: 'Satoshi', sans-serif;" class="text-4xl md:text-8xl font-semibold text-neutral-800">A UI/UX Designer</h2>
         </div>
-        <img src="/images/arjun_img.png" alt="Arjun Bhogal Img" class="w-64 h-64 rounded-full object-cover" id="heroImage" />
     </div>
 
-    <div class="flex items-center space-x-4" id="heroFooter">
-        <p style="font-family: 'Satoshi', sans-serif;" class="font-grotesk text-2xl font-medium text-neutral-800">
+    <div class="flex flex-col md:flex-row items-start md:items-center space-y-0 md:space-y-0 md:space-x-4 mt-4 md:mt-0" id="heroFooter">
+        <p style="font-family: 'Satoshi', sans-serif;" class="font-grotesk text-xl md:text-2xl font-medium text-neutral-800">
             Based in Vienna, Austria
         </p>
-        <div style="font-family: 'Satoshi', sans-serif;" class="font-satoshi flex items-center text-green-600 py-2 rounded-3xl max-w-fit">
+        <div style="font-family: 'Satoshi', sans-serif;" class="font-satoshi flex items-center text-green-600 md:py-2 rounded-3xl max-w-fit">
             <span class="relative flex size-2">
                 <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-600 opacity-75"></span>
                 <span class="relative inline-flex size-2 rounded-full bg-green-600"></span>
             </span>
-            <p class="px-1 italic text-xl font-medium">Open to work</p>
+            <p class="px-1 italic text-lg md:text-xl font-medium">Open to work</p>
         </div>
     </div>
 </div>

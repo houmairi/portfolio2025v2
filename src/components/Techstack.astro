@@ -7,11 +7,17 @@ import IconBadge from "./IconBadge.astro";
   <h2 class="text-8xl font-semibold text-neutral-800 mb-12">Techstack</h2>
   
   <!-- Badges Grid -->
-  <div class="flex flex-wrap gap-4">
+  <div id="badge-group" class="flex flex-wrap gap-4">
     <IconBadge 
       logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" 
       label="Figma" 
       link="https://www.figma.com"
+    />
+    <!-- Miro -->
+    <IconBadge 
+      logoSrc="https://files.readme.io/17d4a23-miro-logo-color-square.png" 
+      label="Miro" 
+      link="https://miro.com"
     />
     <IconBadge 
       logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" 
@@ -62,6 +68,50 @@ import IconBadge from "./IconBadge.astro";
       logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg" 
       label="Illustrator" 
       link="https://www.adobe.com/products/illustrator.html"
+    /> 
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg" 
+      label="Adobe XD" 
+      link="https://www.adobe.com/products/xd.html"
+    />   
+    <!-- Java -->
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" 
+      label="Java" 
+      link="https://www.java.com"
     />
+    <!-- Python -->
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" 
+      label="Python" 
+      link="https://www.python.org"
+    />
+    <!-- MySQL -->
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" 
+      label="MySQL" 
+      link="https://www.mysql.com"
+    />                   
   </div>
 </div>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+
+
+  gsap.from("#badge-group", {
+    scrollTrigger: {
+      trigger: "#badge-group",
+      start: "top 80%", // wenn 20% vom Viewport erreicht
+      toggleActions: "play none none none", // einmal abspielen
+    },
+    y: 80,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+    stagger: 0.05,
+  });
+</script>
