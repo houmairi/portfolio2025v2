@@ -1,0 +1,25 @@
+---
+---
+
+<div style="font-family: 'Satoshi', sans-serif;" class="w-full overflow-hidden bg-neutral-800 text-white text-sm rounded-full mt-8">
+  <div id="banner" class="flex whitespace-nowrap gap-8 text-lg px-4 will-change-transform">
+    {Array.from({ length: 20 }).map(() => (
+      <span>🚧 Work in progress 🚧</span>
+    ))}
+  </div>
+</div>
+
+<!-- Script wird im Browser geladen -->
+<script>
+  import gsap from 'gsap';
+
+  const banner = document.getElementById('banner');
+  const width = banner.scrollWidth;
+
+  gsap.to(banner, {
+    x: -width / 2,
+    duration: 20,
+    ease: 'linear',
+    repeat: -1,
+  });
+</script>

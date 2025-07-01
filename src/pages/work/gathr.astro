@@ -1,0 +1,24 @@
+---
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import WorkInProgressBanner from "../../components/WorkInProgressBanner.astro"
+import Layout from "../../layouts/Layout.astro"
+
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Work', href: '/work' },
+  { name: 'Gathr', href: '/work/Gathr' },
+];
+---
+
+<Layout>
+  <main style="font-family: 'Satoshi', sans-serif;" class="flex-grow gap-6">
+    <Breadcrumb {crumbs}/>
+    <WorkInProgressBanner />
+    <img src="/images/Banner_Gathr_Portfolio.webp" alt="Gathr Banner" class="w-full h-full rounded-lg mb-8" />
+    <h1  class="text-9xl font-bold mb-4 text-neutral-800">Gathr</h1>
+    <p class="text-2xl font-medium text-neutral-600 mb-8">Work in Progress</p>
+    
+
+  </main>
+
+</Layout>

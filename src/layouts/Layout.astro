@@ -10,7 +10,7 @@ import About from '../components/About.astro'
 import Techstack from '../components/Techstack.astro'
 import Education from '../components/Education.astro'
 ---
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -21,16 +21,10 @@ import Education from '../components/Education.astro'
 	<body>
         <div class="max-w-screen-xl mx-auto px-4">
             <Header />
-            <main class="flex-grow gap-6">
-            <Hero />
-            <WorkSection /> 
-            <Techstack />
-            <About />
-            <Education />
-            <Footer/>
-            </main>
+            
             
             <slot class="mx-auto" />   
+            <Footer/>
         </div>
 		
 	</body>
