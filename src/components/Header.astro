@@ -21,7 +21,7 @@ import { Copy, Check, Menu, X } from '@lucide/astro';
     </div>
 
     <!-- Mobile Menu Button -->
-    <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-neutral-100 transition-colors">
+    <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-neutral-100 transition-colors relative z-50">
       <Menu class="w-6 h-6 text-neutral-800" id="menuIcon" />
       <X class="w-6 h-6 text-neutral-800 hidden" id="closeIcon" />
     </button>
@@ -29,11 +29,11 @@ import { Copy, Check, Menu, X } from '@lucide/astro';
 </div>
 
 <!-- Mobile Menu Overlay -->
-<div id="mobileMenu" class="fixed inset-0 bg-white md:hidden" style="z-index: 9999; transform: translateX(100%);">
+<div id="mobileMenu" class="fixed inset-0 bg-white md:hidden transform translate-x-full transition-transform duration-300 ease-in-out" style="z-index: 45;">
   <div class="flex flex-col h-full">
     <!-- Mobile Menu Header -->
-    <div class="flex items-center justify-between py-4 px-4 border-b border-neutral-200">
-      <span style="font-family: 'Satoshi', sans-serif;" class="text-xl font-medium text-neutral-800">Menu</span>
+    <div class="flex items-center justify-between py-4 px-4">
+      <span style="font-family: 'Satoshi', sans-serif;" class="text-xl font-medium text-neutral-800">menu</span>
       <button id="closeMobileMenu" class="p-2 rounded-lg hover:bg-neutral-100 transition-colors">
         <X class="w-6 h-6 text-neutral-800" />
       </button>
@@ -56,11 +56,11 @@ import { Copy, Check, Menu, X } from '@lucide/astro';
     <div class="px-8 pb-12">
       <div class="bg-neutral-800 hover:bg-neutral-700 transition-colors px-6 py-4 rounded-2xl cursor-pointer group w-full" id="copyEmailBtnMobile">
         <div class="flex items-center justify-between">
-          <div>
+          <div class="flex-1">
             <p style="font-family: 'Satoshi', sans-serif;" class="text-white text-sm font-medium mb-1">Get in touch</p>
             <p style="font-family: 'Satoshi', sans-serif;" class="text-white text-lg font-medium">arjun@bhogal.at</p>
           </div>
-          <div class="flex items-center">
+          <div class="flex items-center ml-4">
             <Copy stroke-width="3" class="text-white w-5 h-5 group-hover:scale-110 transition-transform" id="copyIconMobile" />
             <Check stroke-width="3" class="text-white w-5 h-5 hidden" id="checkIconMobile" />
           </div>
@@ -72,8 +72,6 @@ import { Copy, Check, Menu, X } from '@lucide/astro';
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    console.log('Header script loaded'); // Debug
-    
     const email = 'arjun@bhogal.at';
     
     // Desktop Elements
@@ -92,31 +90,40 @@ import { Copy, Check, Menu, X } from '@lucide/astro';
     const checkIconMobile = document.getElementById('checkIconMobile');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-    console.log('Elements found:', { 
-      mobileMenuBtn, 
-      mobileMenu, 
-      closeMobileMenu 
-    }); // Debug
-
     // Mobile Menu Functions
     function openMobileMenu() {
-      console.log('Opening mobile menu'); // Debug
       if (mobileMenu) {
-        mobileMenu.style.transform = 'translateX(0)';
-        mobileMenu.style.transition = 'transform 0.3s ease-in-out';
-        menuIcon.classList.add('hidden');
-        closeIcon.classList.remove('hidden');
+        // Show menu
+        mobileMenu.classList.remove('translate-x-full');
+        mobileMenu.classList.add('translate-x-0');
+        
+        // Update button icons
+        if (menuIcon && closeIcon) {
+          menuIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        }
+        
+        // Prevent body scroll
         document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
       }
     }
 
     function closeMobileMenuFn() {
-      console.log('Closing mobile menu'); // Debug
       if (mobileMenu) {
-        mobileMenu.style.transform = 'translateX(100%)';
-        menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
+        // Hide menu
+        mobileMenu.classList.add('translate-x-full');
+        mobileMenu.classList.remove('translate-x-0');
+        
+        // Update button icons
+        if (menuIcon && closeIcon) {
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+        
+        // Restore body scroll
         document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
       }
     }
 
@@ -124,6 +131,8 @@ import { Copy, Check, Menu, X } from '@lucide/astro';
     async function copyEmail(isMobile = false) {
       const copyIconEl = isMobile ? copyIconMobile : copyIcon;
       const checkIconEl = isMobile ? checkIconMobile : checkIcon;
+      
+      if (!copyIconEl || !checkIconEl) return;
       
       try {
         await navigator.clipboard.writeText(email);
@@ -138,26 +147,57 @@ import { Copy, Check, Menu, X } from '@lucide/astro';
         
       } catch (err) {
         console.error('Failed to copy email: ', err);
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = email;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          copyIconEl.classList.add('hidden');
+          checkIconEl.classList.remove('hidden');
+          setTimeout(() => {
+            checkIconEl.classList.add('hidden');
+            copyIconEl.classList.remove('hidden');
+          }, 3000);
+        } catch (fallbackErr) {
+          console.error('Fallback copy failed: ', fallbackErr);
+        }
+        document.body.removeChild(textArea);
       }
     }
 
     // Event Listeners
-    mobileMenuBtn?.addEventListener('click', () => {
-      console.log('Mobile menu button clicked'); // Debug
-      openMobileMenu();
-    });
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openMobileMenu();
+      });
+    }
     
-    closeMobileMenu?.addEventListener('click', () => {
-      console.log('Close button clicked'); // Debug
-      closeMobileMenuFn();
-    });
+    if (closeMobileMenu) {
+      closeMobileMenu.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeMobileMenuFn();
+      });
+    }
     
-    copyBtn?.addEventListener('click', () => copyEmail(false));
-    copyBtnMobile?.addEventListener('click', () => copyEmail(true));
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => copyEmail(false));
+    }
+    
+    if (copyBtnMobile) {
+      copyBtnMobile.addEventListener('click', () => copyEmail(true));
+    }
     
     // Close menu when clicking on links
     mobileNavLinks.forEach(link => {
-      link.addEventListener('click', closeMobileMenuFn);
+      link.addEventListener('click', () => {
+        // Small delay to allow navigation to start
+        setTimeout(closeMobileMenuFn, 100);
+      });
     });
 
     // Close menu on escape key
@@ -167,6 +207,15 @@ import { Copy, Check, Menu, X } from '@lucide/astro';
       }
     });
 
+    // Close menu when clicking outside (on overlay)
+    if (mobileMenu) {
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          closeMobileMenuFn();
+        }
+      });
+    }
+
     // Hide/Show navbar on scroll
     let lastScroll = 0;
     const nav = document.getElementById('navbar');
@@ -175,17 +224,33 @@ import { Copy, Check, Menu, X } from '@lucide/astro';
       const currentScroll = window.pageYOffset;
 
       if (currentScroll <= 0) {
-        nav.style.transform = 'translateY(0)';
+        if (nav) nav.style.transform = 'translateY(0)';
         return;
       }
 
-      if (currentScroll > lastScroll) {
-        nav.style.transform = 'translateY(-100%)';
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        // Scrolling down & past threshold
+        if (nav) nav.style.transform = 'translateY(-100%)';
       } else {
-        nav.style.transform = 'translateY(0)';
+        // Scrolling up
+        if (nav) nav.style.transform = 'translateY(0)';
       }
 
       lastScroll = currentScroll;
+    });
+
+    // Handle page visibility changes
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        closeMobileMenuFn();
+      }
+    });
+
+    // Handle resize events
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) { // md breakpoint
+        closeMobileMenuFn();
+      }
     });
   });
 </script>

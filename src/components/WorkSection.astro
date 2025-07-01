@@ -4,7 +4,7 @@ import WorkCard from "./WorkCard.astro"
 ---
 
 <div id="work-section" class="work-section bg-neutral-800 py-6 px-6 rounded-xl transition-all duration-500 mx-auto" style="max-width: 100%;">
-  <h2 style="font-family: 'Satoshi', sans-serif;" class="text-8xl font-semibold text-white mb-6">Work & Studies</h2>
+  <h2 style="font-family: 'Satoshi', sans-serif;" class="text-4xl md:text-8xl font-semibold text-white mb-6">Work & Studies</h2>
   <div class="grid grid-cols-1 gap-6">
     
     <WorkCard 
@@ -33,21 +33,43 @@ import WorkCard from "./WorkCard.astro"
   document.addEventListener('DOMContentLoaded', function() {
     const section = document.getElementById("work-section");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            
-            section.style.maxWidth = "90%"; // entspricht max-w-3xl
-          } else {
-            
-            section.style.maxWidth = "100%";
-          }
-        });
-      },
-      { threshold: 0.3 } // Trigger früher
-    );
+    function updateSectionWidth() {
+      const isMobile = window.innerWidth < 768; // md breakpoint
+      
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Mobile: weniger dramatische Veränderung, Desktop: wie vorher
+              section.style.maxWidth = isMobile ? "95%" : "90%";
+            } else {
+              section.style.maxWidth = "100%";
+            }
+          });
+        },
+        { 
+          threshold: isMobile ? 0.1 : 0.3, // Mobile: früher triggern
+          rootMargin: isMobile ? '0px 0px -50px 0px' : '0px' // Mobile: etwas Offset
+        }
+      );
 
-    observer.observe(section);
+      // Cleanup previous observer if exists
+      if (section.currentObserver) {
+        section.currentObserver.disconnect();
+      }
+      
+      section.currentObserver = observer;
+      observer.observe(section);
+    }
+
+    // Initial setup
+    updateSectionWidth();
+
+    // Update on window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(updateSectionWidth, 150);
+    });
   });
 </script>
