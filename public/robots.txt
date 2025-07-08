@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Block CV from being indexed
+Disallow: /assets/Bhogal_Arjun_CV_EN.pdf
+Disallow: /assets/*.pdf
+
+# Optional: Block other private content
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow crawling of images for better SEO
+Allow: /images/
+Allow: /_astro/
+
+Sitemap: https://bhogal.at/sitemap-index.xml

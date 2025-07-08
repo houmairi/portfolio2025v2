@@ -1,24 +1,102 @@
----                          
+---
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
-import '../styles/global.css'  
+import '../styles/global.css'
+import { SEO } from 'astro-seo';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+  type?: 'website' | 'article';
+}
+
+const {
+  title = "Arjun Bhogal - UI/UX Designer & Developer",
+  description = "My name is Arjun, and I'm a UI/UX Designer and Developer with 3 years of experience, developing human centered design solutions, starting at a bare-bone level.",
+  image = "/images/og-image.jpg",
+  canonical,
+  noindex = false,
+  type = 'website'
+} = Astro.props;
+
+const baseURL = Astro.site?.toString() || 'https://bhogal.at';
+const canonicalURL = canonical || new URL(Astro.url.pathname, baseURL).toString();
+const imageURL = new URL(image, baseURL).toString();
+
+// Structured Data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Arjun Bhogal",
+  "jobTitle": "UI/UX Designer & Developer",
+  "url": baseURL,
+  "sameAs": [
+    "https://www.linkedin.com/in/a-bhogal/",
+    "https://github.com/arjbhogal",
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Vienna",
+    "addressCountry": "Austria"
+  },
+  "email": "arjun@bhogal.at",
+  "knowsAbout": ["UI/UX Design", "Web Development", "React", "TypeScript", "Figma"],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Applied Sciences St. Pölten"
+  }
+};
 ---
+
 <html class="scroll-smooth" lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
-		<title>Arjun Bhogal - Development & Design</title>
-	</head>
-	<body>
-        <!-- Mobile: Full width mit Padding, Desktop: Container mit max-width -->
-        <div class="w-full px-4 md:max-w-screen-xl md:mx-auto ">
-            <Header />
-            
-            <slot class="mx-auto" />   
-            <Footer/>
-        </div>
-		
-	</body>
+  <head>
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonicalURL}
+      noindex={noindex}
+      openGraph={{
+        basic: {
+          title: title,
+          type: type,
+          image: imageURL,
+          url: canonicalURL,
+        },
+        optional: {
+          description: description,
+          locale: "en_US",
+          siteName: "Arjun Bhogal Portfolio",
+        },
+      }}
+      extend={{
+        link: [
+          { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+          { rel: "sitemap", href: "/sitemap-index.xml" },
+        ],
+        meta: [
+          { name: "viewport", content: "width=device-width, initial-scale=1.0" },
+          { name: "author", content: "Arjun Bhogal" },
+          { name: "robots", content: noindex ? "noindex, nofollow" : "index, follow" },
+          { name: "theme-color", content: "#171717" },
+          // Nur bei Artikeln
+          ...(type === 'article' ? [{ property: "article:author", content: "Arjun Bhogal" }] : []),
+        ],
+      }}
+    />
+    
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  
+  <body>
+    <div class="w-full px-4 md:max-w-screen-xl md:mx-auto">
+      <Header />
+      <slot />
+      <Footer />
+    </div>
+  </body>
 </html>
