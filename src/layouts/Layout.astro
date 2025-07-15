@@ -14,15 +14,15 @@ export interface Props {
 }
 
 const {
-  title = "Arjun Bhogal - UI/UX Designer & Developer",
-  description = "My name is Arjun, and I'm a UI/UX Designer and Developer with 3 years of experience, developing human centered design solutions, starting at a bare-bone level.",
+  title = "Niko Tunjic - Software Engineer", 
+  description = "Software Engineer with experience leading projects from start to finish, working both as a freelancer and in large companies, specializing in full-stack development and machine learning solutions.",
   image = "/images/og-image.jpg",
   canonical,
   noindex = false,
   type = 'website'
 } = Astro.props;
 
-const baseURL = Astro.site?.toString() || 'https://bhogal.at';
+const baseURL = Astro.site?.toString() || 'https://tunjic.at';
 const canonicalURL = canonical || new URL(Astro.url.pathname, baseURL).toString();
 const imageURL = new URL(image, baseURL).toString();
 
@@ -30,23 +30,23 @@ const imageURL = new URL(image, baseURL).toString();
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Arjun Bhogal",
-  "jobTitle": "UI/UX Designer & Developer",
+  "name": "Niko Tunjic",
+  "jobTitle": "Software Engineer",
   "url": baseURL,
   "sameAs": [
-    "https://www.linkedin.com/in/a-bhogal/",
-    "https://github.com/arjbhogal",
+    "https://www.linkedin.com/in/niko-tunjic/",
+    "https://github.com/houmairi",
   ],
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Vienna",
     "addressCountry": "Austria"
   },
-  "email": "arjun@bhogal.at",
-  "knowsAbout": ["UI/UX Design", "Web Development", "React", "TypeScript", "Figma"],
+  "email": "niko@tunjic.at",
+  "knowsAbout": ["Software Engineering", "Full-Stack Development", "Machine Learning", "JavaScript", "Python", "React", "Node.js"],
   "alumniOf": {
     "@type": "CollegeOrUniversity",
-    "name": "University of Applied Sciences St. Pölten"
+    "name": "FH Technikum Wien"
   }
 };
 ---
@@ -68,7 +68,7 @@ const structuredData = {
         optional: {
           description: description,
           locale: "en_US",
-          siteName: "Arjun Bhogal Portfolio",
+          siteName: "Niko Tunjic Portfolio",
         },
       }}
       extend={{
@@ -78,11 +78,11 @@ const structuredData = {
         ],
         meta: [
           { name: "viewport", content: "width=device-width, initial-scale=1.0" },
-          { name: "author", content: "Arjun Bhogal" },
+          { name: "author", content: "Niko Tunjic" },
           { name: "robots", content: noindex ? "noindex, nofollow" : "index, follow" },
           { name: "theme-color", content: "#171717" },
           // Nur bei Artikeln
-          ...(type === 'article' ? [{ property: "article:author", content: "Arjun Bhogal" }] : []),
+          ...(type === 'article' ? [{ property: "article:author", content: "Niko Tunjic" }] : []),
         ],
       }}
     />
