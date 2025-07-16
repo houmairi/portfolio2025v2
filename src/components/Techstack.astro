@@ -6,23 +6,13 @@ import IconBadge from "./IconBadge.astro";
   <!-- Techstack Heading -->
   <h2 class="text-6xl md:text-8xl font-semibold text-neutral-800 mb-12">Techstack</h2>
   
-  <!-- Badges Grid -->
+  <!-- Badges Grid - Sorted by category -->
   <div id="badge-group" class="flex flex-wrap gap-4">
+    <!-- Languages -->
     <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" 
-      label="Figma" 
-      link="https://www.figma.com"
-    />
-    <!-- Miro -->
-    <IconBadge 
-      logoSrc="https://files.readme.io/17d4a23-miro-logo-color-square.png" 
-      label="Miro" 
-      link="https://miro.com"
-    />
-    <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" 
-      label="React" 
-      link="https://reactjs.org"
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" 
+      label="JavaScript" 
+      link="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
     />
     <IconBadge 
       logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" 
@@ -30,9 +20,26 @@ import IconBadge from "./IconBadge.astro";
       link="https://www.typescriptlang.org"
     />
     <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" 
-      label="Tailwind" 
-      link="https://tailwindcss.com"
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" 
+      label="Java" 
+      link="https://www.java.com"
+    />
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" 
+      label="Python" 
+      link="https://www.python.org"
+    />
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" 
+      label="R" 
+      link="https://www.r-project.org"
+    />
+    
+    <!-- Frontend Frameworks -->
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" 
+      label="React" 
+      link="https://reactjs.org"
     />
     <IconBadge 
       logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" 
@@ -40,15 +47,58 @@ import IconBadge from "./IconBadge.astro";
       link="https://nextjs.org"
     />
     <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/astro/astro-original.svg" 
+      label="Astro" 
+      link="https://astro.build"
+    />
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" 
+      label="Tailwind" 
+      link="https://tailwindcss.com"
+    />
+    
+    <!-- Backend & Runtime -->
+    <IconBadge 
       logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" 
       label="Node.js" 
       link="https://nodejs.org"
     />
+    
+    <!-- Databases -->
     <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" 
-      label="AngularJS" 
-      link="https://angular.dev"
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" 
+      label="MySQL" 
+      link="https://www.mysql.com"
     />
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" 
+      label="PostgreSQL" 
+      link="https://www.postgresql.org"
+    />
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" 
+      label="MongoDB" 
+      link="https://www.mongodb.com"
+    />
+    
+    <!-- DevOps & Infrastructure -->
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" 
+      label="Docker" 
+      link="https://www.docker.com"
+    />
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" 
+      label="Self-hosting" 
+      link="https://www.linux.org"
+    />
+    <IconBadge 
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/digitalocean/digitalocean-original.svg" 
+      label="VPS/Hosting" 
+      link="https://en.wikipedia.org/wiki/Virtual_private_server"
+    />
+    
+    <!-- Development Tools -->
     <IconBadge 
       logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" 
       label="Git" 
@@ -59,73 +109,34 @@ import IconBadge from "./IconBadge.astro";
       label="VS Code" 
       link="https://code.visualstudio.com"
     />
+    
+    <!-- Project Management -->
     <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/astro/astro-original.svg" 
-      label="Astro" 
-      link="https://astro.build"
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" 
+      label="Jira" 
+      link="https://www.atlassian.com/software/jira"
     />
     <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" 
-      label="Photoshop" 
-      link="https://www.adobe.com/products/photoshop.html"
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/confluence/confluence-original.svg" 
+      label="Confluence" 
+      link="https://www.atlassian.com/software/confluence"
     />
     <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg" 
-      label="Illustrator" 
-      link="https://www.adobe.com/products/illustrator.html"
-    /> 
-    <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg" 
-      label="Adobe XD" 
-      link="https://www.adobe.com/products/xd.html"
-    />   
-    <!-- Java -->
-    <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" 
-      label="Java" 
-      link="https://www.java.com"
+      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg" 
+      label="Trello" 
+      link="https://trello.com"
     />
-    <!-- Python -->
-    <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" 
-      label="Python" 
-      link="https://www.python.org"
-    />
-    <!-- MySQL -->
-    <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" 
-      label="MySQL" 
-      link="https://www.mysql.com"
-    />
-    <!-- R -->
-    <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" 
-      label="R" 
-      link="https://www.r-project.org"
-    />
-    <!-- PyTorch -->
+    
+    <!-- Machine Learning -->
     <IconBadge 
       logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" 
       label="PyTorch" 
       link="https://pytorch.org"
     />
-    <!-- TensorFlow -->
     <IconBadge 
       logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" 
       label="TensorFlow" 
       link="https://www.tensorflow.org"
-    />
-    <!-- Docker -->
-    <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" 
-      label="Docker" 
-      link="https://www.docker.com"
-    />
-    <!-- MongoDB -->
-    <IconBadge 
-      logoSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" 
-      label="MongoDB" 
-      link="https://www.mongodb.com"
     />                   
   </div>
 </div>
