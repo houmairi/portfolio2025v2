@@ -1,4 +1,9 @@
 ---
+import { getContributionCount, getGitHubContributionsUrl } from '../utils/github.js';
+
+const currentYear = new Date().getFullYear();
+const contributionCount = await getContributionCount(currentYear);
+const githubUrl = getGitHubContributionsUrl(currentYear);
 ---
 
 <div id="Hero" class="py-20 px-4 md:py-32">
@@ -19,7 +24,9 @@
                 <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-600 opacity-75"></span>
                 <span class="relative inline-flex size-2 rounded-full bg-green-600"></span>
             </span>
-            <p class="px-1 italic text-lg md:text-xl font-medium">Github commit linking. (working on x commit yaddayadda)</p>
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="px-1 italic text-lg md:text-xl font-medium hover:underline transition-all duration-200">
+                <span class="font-semibold">{contributionCount}</span> contributions deep into {currentYear}.
+            </a>
         </div>
     </div>
 </div>
