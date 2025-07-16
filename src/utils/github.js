@@ -24,7 +24,7 @@ export async function getContributionCount(year = new Date().getFullYear()) {
       headers: {
         'Content-Type': 'application/json',
         // For production, add your GitHub token here:
-        // 'Authorization': `Bearer ${import.meta.env.GITHUB_TOKEN}`
+        'Authorization': `Bearer ${import.meta.env.GITHUB_TOKEN}`
       },
       body: JSON.stringify({ query })
     });
@@ -53,4 +53,57 @@ export function getGitHubProfileUrl() {
  */
 export function getGitHubContributionsUrl(year = new Date().getFullYear()) {
   return `https://github.com/${GITHUB_USERNAME}?tab=overview&from=${year}-01-01&to=${year}-12-31`;
+}
+
+/**
+ * Fetches pinned repositories from GitHub
+ * @returns {Promise<Array>} Array of pinned repositories
+ */
+export async function getPinnedRepos() {
+  try {
+    const query = `
+      query {
+        user(login: "${GITHUB_USERNAME}") {
+          pinnedItems(first: 6, types: REPOSITORY) {
+            nodes {
+              ... on Repository {
+                name
+                description
+                url
+                primaryLanguage {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    `;
+    
+    const response = await fetch('https://api.github.com/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${import.meta.env.GITHUB_TOKEN}`
+      },
+      body: JSON.stringify({ query })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`GitHub API error: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    const repos = data.data?.user?.pinnedItems?.nodes || [];
+    
+    return repos.map(repo => ({
+      name: repo.name,
+      description: repo.description || 'No description available',
+      html_url: repo.url,
+      language: repo.primaryLanguage?.name
+    }));
+  } catch (error) {
+    console.error('Failed to fetch pinned repositories:', error);
+    return [];
+  }
 }

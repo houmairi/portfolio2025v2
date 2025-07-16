@@ -1,0 +1,58 @@
+---
+import RepoCard from "./RepoCard.astro"
+import { getPinnedRepos } from '../utils/github.js';
+
+const pinnedRepos = await getPinnedRepos();
+---
+
+<div id="projects-section" class="projects-section bg-neutral-800 py-6 px-6 rounded-xl mx-auto" style="opacity: 0;">
+  <h2 id="projects-title" style="font-family: 'Satoshi', sans-serif; opacity: 0; transform: translateY(50px);" class="text-4xl md:text-8xl font-semibold text-white mb-6">Featured Projects</h2>
+  <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {pinnedRepos.map((repo) => (
+      <div style="opacity: 0; transform: translateY(30px);">
+        <RepoCard 
+          name={repo.name}
+          description={repo.description}
+          html_url={repo.html_url}
+          language={repo.language}
+        />
+      </div>
+    ))}
+  </div>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#projects-section",
+        start: "top 85%",
+        toggleActions: "play none none none"
+      }
+    });
+    
+    tl.to("#projects-section", {
+      duration: 0.8,
+      opacity: 1,
+      ease: "power2.out"
+    })
+    .to("#projects-title", {
+      duration: 0.8,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out"
+    }, "-=0.6")
+    .to("#projects-grid > *", {
+      duration: 0.6,
+      y: 0,
+      opacity: 1,
+      stagger: 0.1,
+      ease: "power2.out"
+    }, "-=0.4");
+  });
+</script>
+</div>
