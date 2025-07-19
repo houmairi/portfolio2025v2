@@ -2,49 +2,26 @@
 
 ---
 <!-- Footer Component -->
-<footer id="footer" class="bg-neutral-800 text-white py-4 p-4 w-full rounded-xl mt-16 mb-12 flex-col  transition-all duration-500 mx-auto gap space-y-4 px-4" style="max-width: 100%;">
+<footer id="footer" class="bg-neutral-800 text-white py-4 p-4 w-full rounded-xl mt-16 mb-12 flex-col mx-auto gap space-y-4 px-4">
   <div class="max-w-screen-xl mx-auto flex justify-between items-center">
-    <div style="font-family: 'Satoshi', sans-serif;"class ="justfy-start text-White text-lg">Interested in collaborating?<br/>Don’t hesitate.</div>
-
+    <div style="font-family: 'Satoshi', sans-serif;" class="justify-start text-white text-lg">Interested in collaborating?<br/>Don't hesitate.</div>
   </div>
+  
   <form action="#" class="space-y-4" style="font-family: 'Satoshi', sans-serif;">
-          <div>
-              <label for="email" class="block mb-2 text-sm font-medium text-neutral-900 dark:text-neutral-300">Your email*</label>
-              <input type="email" id="email" class="shadow-sm bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="yourname@host.com" required>
-          </div>
-          <div>
-              <label for="subject" class="block mb-2 text-sm font-medium text-neutral-900 dark:text-neutral-300">Subject*</label>
-              <input type="text" id="subject" class="block p-3 w-full text-sm text-neutral-900 bg-neutral-50 rounded-lg border border-neutral-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="I want to collaborate!" required>
-          </div>
-          <div class="sm:col-span-2">
-              <label for="message" class="block mb-2 text-sm font-medium text-neutral-900 dark:text-neutral-400">Your message</label>
-              <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-neutral-900 bg-neutral-50 rounded-lg shadow-sm border border-neutral-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
-          </div>
-          <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-neutral-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send message</button>
-      </form>
+    <div>
+      <label for="email" class="block mb-2 text-sm font-medium text-neutral-900 dark:text-neutral-300">Your email*</label>
+      <input type="email" id="email" class="shadow-sm bg-neutral-50 border border-neutral-300 text-neutral-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="yourname@host.com" required>
+    </div>
+    <div>
+      <label for="subject" class="block mb-2 text-sm font-medium text-neutral-900 dark:text-neutral-300">Subject*</label>
+      <input type="text" id="subject" class="block p-3 w-full text-sm text-neutral-900 bg-neutral-50 rounded-lg border border-neutral-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="I want to collaborate!" required>
+    </div>
+    <div class="sm:col-span-2">
+      <label for="message" class="block mb-2 text-sm font-medium text-neutral-900 dark:text-neutral-400">Your message</label>
+      <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-neutral-900 bg-neutral-50 rounded-lg shadow-sm border border-neutral-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
+    </div>
+    <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-neutral-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send message</button>
+  </form>
 
-    <p style="font-family: 'Satoshi', sans-serif;" class="text-sm">&copy; 2025 Niko Tunjic. All rights reserved.</p>
+  <p style="font-family: 'Satoshi', sans-serif;" class="text-sm">&copy; 2025 Niko Tunjic. All rights reserved. Design by <a href="https://bhogal.at" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-300 transition-colors">bhogal.at</a></p>
 </footer>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const section = document.getElementById("footer");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            
-            section.style.maxWidth = "90%"; // entspricht max-w-3xl
-          } else {
-            
-            section.style.maxWidth = "100%";
-          }
-        });
-      },
-      { threshold: 0.3 } // Trigger früher
-    );
-
-    observer.observe(section);
-  });
-</script>
