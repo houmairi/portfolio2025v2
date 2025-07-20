@@ -1,47 +1,64 @@
-# Astro Starter Kit: Minimal
+# Portfolio 2025 v2
 
-```sh
-npm create astro@latest -- --template minimal
+A modern, fast portfolio website built with Astro, showcasing software engineering projects and experience.
+
+🌐 **Live Site**: [tunjic.at](https://tunjic.at)
+
+## Tech Stack
+
+- **Framework**: Astro 5.10 (Static Site Generation)
+- **Styling**: Tailwind CSS 4.1
+- **TypeScript**: Strict configuration for type safety
+- **Animations**: GSAP for smooth interactions
+- **SEO**: Built-in sitemap and meta optimization
+- **Icons**: Lucide icons
+
+## Features
+
+- **GitHub Integration**: Live contribution count display
+- **Responsive Design**: Mobile-first approach
+- **Performance Optimized**: Fast loading with Astro's static generation
+- **SEO Ready**: Automated sitemap and meta tags
+- **Component Architecture**: Modular, reusable components
+
+## Project Structure
+
+```
+src/
+├── components/        # Reusable UI components
+├── layouts/          # Page layouts
+├── pages/            # Route pages
+├── styles/           # Global styles
+└── utils/            # Helper functions
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## Quick Start
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+```bash
+# Install dependencies
+npm install
 
-## 🚀 Project Structure
+# Start development server
+npm run dev
 
-Inside of your Astro project, you'll see the following folders and files:
+# Build for production
+npm run build
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+# Preview production build
+npm run preview
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Development
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+The project follows clean architecture principles with:
 
-Any static assets, like images, can be placed in the `public/` directory.
+- **Component Isolation**: Each component handles its own styling and logic
+- **Type Safety**: TypeScript for reliable development
+- **Performance First**: Optimized images and minimal JavaScript
+- **SEO Best Practices**: Proper meta tags and sitemap generation
 
-## 🧞 Commands
+## Deployment
 
-All commands are run from the root of the project, from a terminal:
+Built files are generated in the `dist/` directory and can be deployed to any static hosting platform.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
