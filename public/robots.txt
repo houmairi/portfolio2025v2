@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Block CV from being indexed
-Disallow: /assets/Bhogal_Arjun_CV_EN.pdf
+Disallow: /assets/TUNJIC_Niko_CV_EN.pdf
 Disallow: /assets/*.pdf
 
 # Optional: Block other private content
@@ -13,4 +13,4 @@ Disallow: /assets/*.pdf
 Allow: /images/
 Allow: /_astro/
 
-Sitemap: https://bhogal.at/sitemap-index.xml
+Sitemap: https://tunjic.at/sitemap-index.xml
