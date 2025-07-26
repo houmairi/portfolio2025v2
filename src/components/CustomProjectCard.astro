@@ -9,10 +9,10 @@ export interface Props {
 const { name, description, url, technology } = Astro.props;
 ---
 
-<div class="bg-neutral-100 rounded-lg p-6 hover:bg-neutral-200 transition-all duration-300 group">
+<div class="bg-neutral-100 rounded-lg p-4 sm:p-6 hover:bg-neutral-200 transition-all duration-300 group w-full min-w-0">
   <div class="flex flex-col h-full">
     <div class="flex items-center justify-between mb-3">
-      <h3 class="text-xl font-semibold text-neutral-800 group-hover:text-neutral-900 transition-colors">
+      <h3 class="text-lg sm:text-xl font-semibold text-neutral-800 group-hover:text-neutral-900 transition-colors break-words">
         {name}
       </h3>
       {technology && (
