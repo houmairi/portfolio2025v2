@@ -1,16 +1,43 @@
 ---
 import RepoCard from "./RepoCard.astro"
+import CustomProjectCard from "./CustomProjectCard.astro"
 import { getPinnedRepos, getGitHubProfileUrl } from '../utils/github.js';
 
 const pinnedRepos = await getPinnedRepos();
 const githubProfileUrl = getGitHubProfileUrl();
+
+// Custom projects
+const customProjects = [
+  {
+    name: "Lehrmittelstelle Uni Wien",
+    description: "Webshop configurator for university dissertation printing services. Built as a 3-person team using Next.js and Tailwind CSS.",
+    url: "https://lehrmittelstelle.at/",
+    technology: "Next.js"
+  },
+  {
+    name: "PaintingDiary.com",
+    description: "Art publication platform by André Hemer exploring painting through thoughtful writing and real-world gallery experiences.",
+    url: "https://paintingdiary.com",
+    technology: "CSS"
+  }
+];
 ---
 
 <div id="projects-section" class="projects-section bg-neutral-800 py-6 px-6 rounded-xl mx-auto" style="opacity: 0;">
   <h2 id="projects-title" style="font-family: 'Satoshi', sans-serif; opacity: 0; transform: translateY(50px);" class="text-4xl md:text-8xl font-semibold text-white mb-6">Featured Projects</h2>
   <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {customProjects.map((project) => (
+      <div class="flex" style="opacity: 0; transform: translateY(30px);">
+        <CustomProjectCard 
+          name={project.name}
+          description={project.description}
+          url={project.url}
+          technology={project.technology}
+        />
+      </div>
+    ))}
     {pinnedRepos.map((repo) => (
-      <div style="opacity: 0; transform: translateY(30px);">
+      <div class="flex" style="opacity: 0; transform: translateY(30px);">
         <RepoCard 
           name={repo.name}
           description={repo.description}
